@@ -1,0 +1,93 @@
+### O que é e para que serve?
+
+Em APIs descritas pelo Swagger ou OpenAPI, a seção "responses" é um componente crucial que define as respostas esperadas de uma operação da API. Cada operação (GET, POST, PUT, DELETE, etc.) pode retornar diversas respostas dependendo do resultado da execução, como sucesso, erro de cliente, erro de servidor, entre outros. Essas respostas são documentadas na seção "responses" para fornecer uma compreensão clara do que o consumidor da API pode esperar como resposta, incluindo o código de status, a descrição e a estrutura do corpo da resposta (payload).
+
+### Quando utilizar?
+
+A definição da estrutura de "responses" deve ser utilizada sempre que uma API for desenvolvida e exposta para outros sistemas ou desenvolvedores consumirem. A documentação clara das possíveis respostas ajuda no entendimento e na integração eficaz da API, além de ser essencial para a geração de SDKs automáticos, testes e ferramentas de interface como o Swagger UI.
+
+### Definição completa da estrutura responses por meio de uma classe de configuração do tipo OpenAPI
+
+No Java, a especificação OpenAPI pode ser criada programaticamente usando classes de configuração. Isso pode ser feito através do uso da biblioteca `swagger-core` ou outras bibliotecas compatíveis com OpenAPI 3.0. Abaixo, um exemplo de como configurar as respostas para uma operação usando uma classe de configuração:
+
+```java
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.responses.ApiResponse;
+import io.swagger.v3.oas.models.responses.ApiResponses;
+
+public class OpenApiConfig {
+    public OpenAPI customOpenAPI() {
+        OpenAPI openApi = new OpenAPI()
+            .info(new Info().title("Example API").version("v1"));
+
+        ApiResponses apiResponses = new ApiResponses()
+            .addApiResponse("200", createApiResponse("Success"))
+            .addApiResponse("400", createApiResponse("Bad Request"))
+            .addApiResponse("500", createApiResponse("Internal Server Error"));
+
+        // Aqui adicionamos os responses a uma operação específica, por exemplo, um GET no endpoint /example
+        openApi.path("/example", new PathItem().get(new Operation().responses(apiResponses)));
+
+        return openApi;
+    }
+
+    private ApiResponse createApiResponse(String description) {
+        return new ApiResponse().description(description);
+    }
+}
+```
+
+### Definição completa da estrutura responses por meio de anotação própria
+
+Alternativamente, as respostas podem ser definidas diretamente no código da API usando anotações do Swagger/OpenAPI. Esta abordagem é mais direta e permite que a documentação seja colocada junto ao código que realiza as operações. Veja como usar anotações para documentar as respostas de uma operação REST:
+
+```java
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ExampleController {
+
+    @GetMapping("/example")
+    @Operation(summary = "Get example", responses = {
+        @ApiResponse(responseCode = "200", description = "Successful retrieval", 
+                     content = @Content(schema = @Schema(implementation = ExampleResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", 
+                     content = @Content(schema = @Schema(hidden = true))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", 
+                     content = @Content(schema = @Schema(hidden = true)))
+    })
+    public ResponseEntity<ExampleResponse> getExample() {
+        return ResponseEntity.ok(new ExampleResponse("data"));
+    }
+    
+    @GetMapping("/example")
+    @Operation(summary = "Get example")
+    @ApiResponses(value = {  
+		@ApiResponse(responseCode = "200", description = "Successful retrieval",  
+				content = @Content(schema = @Schema(implementation = Exemplo.class))),  
+		@ApiResponse(responseCode = "400", description = "Bad Request",  
+				content = @Content(schema = @Schema(hidden = true))),  
+		@ApiResponse(responseCode = "500", description = "Internal Server Error",  
+				content = @Content(schema = @Schema(hidden = true)))  
+    )
+    public ResponseEntity<ExampleResponse> getExample() {
+        return ResponseEntity.ok(new ExampleResponse("data"));
+    }
+}
+```
+
+### Observações Adicionais
+
+- **Testes e Validação**: A utilização das definições de responses ajuda no desenvolvimento de testes automáticos, garantindo que as respostas estejam conforme especificado.
+- **Ferramentas e Interfaces**: A documentação via Swagger/OpenAPI é crucial para ferramentas como Swagger UI, que permite aos usuários interagir com a API diretamente através de um navegador, facilitando muito o processo de testes e integração.
+
+A documentação completa e precisa das respostas da sua API contribui significativamente para a usabilidade e manutenção da API, além de proporcionar uma melhor experiência para os desenvolvedores que ir
+
+ão consumi-la.

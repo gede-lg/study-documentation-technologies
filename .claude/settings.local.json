@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(dir \"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M9-estruturas-condicionais\")",
+      "Bash(dir \"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M10-estruturas-repeticao\")",
+      "Bash(dir:*)",
+      "Bash(nul)",
+      "Bash(findstr:*)",
+      "Bash(xcopy:*)",
+      "Bash(cp:*)",
+      "Bash(echo:*)",
+      "Bash(\"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M21-sintaxe-moderna-es6\\README.md\")",
+      "Bash(\"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M22-estruturas-dados-avancadas\\README.md\")",
+      "Bash(\"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M23-metaprogramacao-completo\\README.md\")",
+      "Bash(\"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M24-performance-memory\\README.md\")",
+      "Bash(\"G:\\Meu Drive\\Study\\Linguagens\\Javascript\\M25-browser-apis-dom\\README.md\")",
+      "Bash(move \"G:\\Meu Drive\\Study\\Linguagens\\Java\\M1-introducao-ambiente-desenvolvimento\\01-download-instalacao-jdk.md\" \"G:\\Meu Drive\\Study\\Linguagens\\Java\\M1-introducao-ambiente-desenvolvimento\\T2-configuracao-ambiente\\01-download-instalacao-jdk.md\")",
+      "Bash(move \"G:\\Meu Drive\\Study\\Linguagens\\Java\\M1-introducao-ambiente-desenvolvimento\\02-configuracao-variaveis-ambiente.md\" \"G:\\Meu Drive\\Study\\Linguagens\\Java\\M1-introducao-ambiente-desenvolvimento\\T2-configuracao-ambiente\\02-configuracao-variaveis-ambiente.md\")",
+      "Bash(test:*)",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M5-Arrays\\T5-iteracao-arrays\" ])",
+      "Bash(then echo \"Pasta existe\")",
+      "Bash(else echo \"Pasta não existe\")",
+      "Bash(fi)",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M6-Strings\\T2-criacao-inicializacao-strings\" ])",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M6-Strings\\T4-comparacao-strings\" ])",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M6-Strings\\T5-concatenacao-strings\" ])",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M6-Strings\\T7-formatacao-strings\" ])",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B1-fundamentos-da-linguagem\\M6-Strings\\T9-text-blocks\" ])",
+      "Bash(if [ -d \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B2-programacao-orientada-objetos\\M1-conceitos-fundamentais-poo\\T3-atributos\" ])",
+      "Bash(if not exist \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B2-programacao-orientada-objetos\\M4-polimorfismo\\T5-polimorfismo-com-interfaces\" mkdir \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B2-programacao-orientada-objetos\\M4-polimorfismo\\T5-polimorfismo-com-interfaces\")",
+      "Bash(if not exist \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\" mkdir \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\")",
+      "Bash(if not exist \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\\M1-fundamentos-excecoes\" mkdir \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\\M1-fundamentos-excecoes\")",
+      "Bash(if not exist \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\\M1-fundamentos-excecoes\\T1-conceito-excecao\" mkdir \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B3-tratamento-excecoes\\M1-fundamentos-excecoes\\T1-conceito-excecao\")",
+      "Bash(if not exist \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B4-colecoes-collections-framework\\M2-list-interface\\T5-stack\" mkdir \"G:\\Meu Drive\\Study\\Linguagens\\Java\\B4-colecoes-collections-framework\\M2-list-interface\\T5-stack\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,82 @@
+A estrutura "Info" é um componente crucial nos documentos do Swagger e OpenAPI, que fornece metadados essenciais sobre uma API. Ela é fundamental para informar aos consumidores da API detalhes importantes que ajudam a entender o propósito e o contexto da API. Abaixo, exploraremos em detalhes o que é essa estrutura, para que serve, quando utilizá-la, e como implementá-la em um projeto Java com Spring Boot usando SpringDoc OpenAPI.
+
+## O que é e para que serve?
+
+A estrutura `Info` é parte do documento OpenAPI e é usada para fornecer informações gerais sobre a API. Essa estrutura inclui campos como título, descrição, versão, termos de serviço, informações de contato e licença. Esses dados são cruciais para que os usuários da API entendam rapidamente o que a API faz, quem mantém, e sob quais condições pode ser usada.
+
+Por exemplo, o campo `title` pode conter o nome da API, enquanto `description` oferece um resumo detalhado do que a API faz. A `version` ajuda na gestão de versões da API, e os campos `contact` e `license` fornecem detalhes sobre como entrar em contato com os responsáveis pela API e as condições legais de seu uso, respectivamente.
+
+## Quando utilizar?
+
+A estrutura `Info` deve ser utilizada sempre que você estiver documentando uma API usando Swagger ou OpenAPI. Ela é essencial para qualquer documentação de API, pois fornece a primeira camada de informações que os usuários veem ao acessar sua documentação. Esses dados ajudam a estabelecer credibilidade e clareza em relação ao propósito e manutenção da API.
+
+## Definição completa por meio de uma classe de configuração
+
+Você pode definir a estrutura `Info` programaticamente em Java usando Spring Boot com a biblioteca SpringDoc OpenAPI. Aqui está como você pode fazer isso através de uma classe de configuração:
+
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.License;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+            .info(new Info().title("API de Exemplo")
+                            .version("1.0.0")
+                            .description("Esta é uma API de exemplo para ilustrar a configuração da estrutura Info no OpenAPI.")
+                            .termsOfService("https://example.com/terms")
+                            .contact(new Contact().name("Suporte da API")
+                                                  .email("suporte@example.com")
+                                                  .url("https://example.com/contact"))
+                            .license(new License().name("Apache 2.0")
+                                                  .url("http://apache.org/licenses/LICENSE-2.0.html")));
+    }
+}
+```
+
+Neste exemplo, a classe `OpenApiConfig` define um bean `OpenAPI` que inclui todas as informações relevantes sobre a API. Isso será automaticamente refletido na documentação da API gerada.
+
+## Definição completa por meio de anotação
+
+Você também pode configurar a estrutura `Info` usando a anotação `@OpenAPIDefinition` diretamente na sua classe de inicialização do Spring Boot, como mostrado abaixo:
+
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.License;
+
+@SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "API de Exemplo", 
+                                version = "2.0", 
+                                description = "Descrição detalhada da API.",
+                                termsOfService = "https://example.com/terms",
+                                contact = @Contact(name = "Suporte da API", 
+                                                   url = "https://example.com/contact", 
+                                                   email = "suporte@example.com"),
+                                license = @License(name = "Apache 2.0", 
+                                                   url = "http://apache.org/licenses/LICENSE-2.0.html")))
+public class ApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ApiApplication.class, args);
+    }
+}
+```
+
+Neste caso, a anotação `@OpenAPIDefinition` é usada para especificar todos os metadados necessários diret
+
+amente na classe de aplicação, facilitando a visualização e modificação.
+
+## Considerações Finais
+
+A definição da estrutura `Info` é fundamental para qualquer documentação de API utilizando Swagger ou OpenAPI. Seja através de uma configuração programática ou usando anotações, é importante fornecer informações claras e precisas para ajudar os usuários a entender e interagir com a API eficientemente. Esta prática não apenas melhora a usabilidade da API, mas também aumenta sua adoção e conformidade com boas práticas de desenvolvimento e documentação de software.

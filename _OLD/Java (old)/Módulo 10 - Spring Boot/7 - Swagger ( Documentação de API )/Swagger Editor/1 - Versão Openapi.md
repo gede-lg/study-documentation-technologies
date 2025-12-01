@@ -1,0 +1,1 @@
+- openapi: 3.0.0 # A versão da especificação OpenAPI que a documentação segue
