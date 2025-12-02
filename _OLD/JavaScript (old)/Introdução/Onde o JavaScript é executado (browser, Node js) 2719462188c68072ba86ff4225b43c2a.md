@@ -1,0 +1,1 @@
+# Onde o JavaScript é executado (browser, Node.js)
